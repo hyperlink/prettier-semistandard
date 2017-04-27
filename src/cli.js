@@ -22,12 +22,13 @@ const cli = meow(
 `
 );
 
-stdin().then(data => {
+Promise.resolve(
+  cli.input.length === 0 ? stdin() : undefined
+).then(data => {
   if (data) {
     // Process stdin
     return R.composeP(s => process.stdout.write(s), lib.format)(data);
-  }
-  if (cli.input.length === 0) {
+  } else if (cli.input.length === 0) {
     // No args used; show help
     return cli.showHelp(1);
   }
