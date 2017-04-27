@@ -1,6 +1,6 @@
 {
   "name": "prettier-semistandard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Prettier for JavaScript Semistandard Style",
   "main": "src/index.js",
   "bin": "src/cli.js",
