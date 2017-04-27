@@ -7,7 +7,11 @@ const meow = require('meow');
 const stdin = require('get-stdin');
 const lib = require('./lib');
 
-const DEFAULT_IGNORE_LIST = ['.git', 'node_modules', '!*.js'];
+const DEFAULT_IGNORE_LIST = [
+  '.git',
+  'node_modules',
+  '!*.js'
+];
 
 const cli = meow(
   `
@@ -27,7 +31,10 @@ Promise.resolve(
 ).then(data => {
   if (data) {
     // Process stdin
-    return R.composeP(s => process.stdout.write(s), lib.format)(data);
+    return R.composeP(
+      s => process.stdout.write(s),
+      lib.format
+    )(data);
   } else if (cli.input.length === 0) {
     // No args used; show help
     return cli.showHelp(1);
