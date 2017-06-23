@@ -30,6 +30,9 @@ $ prettier-semistandard --help
   Usage
     $ prettier-semistandard [<file|glob> ...]
 
+  Options
+    --print-width  Specify the print width
+
   Examples
     $ prettier-semistandard
     $ prettier-semistandard index.js

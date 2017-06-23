@@ -18,16 +18,20 @@ const lint = code => new Promise(
   )
 );
 
-// Run prettier on a string
-// :: inCode -> outCode
-const pretty = code => prettier.format(code, {
+const prettierOptions = {
   printWidth: 80,
   tabWidth: 2,
   parser: 'babylon',
   singleQuote: true,
   trailingComma: 'none',
   bracketSpacing: true
-});
+};
+
+const setOverrides = override => Object.assign(prettierOptions, override);
+
+// Run prettier on a string
+// :: inCode -> outCode
+const pretty = code => prettier.format(code, prettierOptions);
 
 // Run formatter on a string
 // :: inCode -> ( Promise -> outCode )
@@ -68,5 +72,6 @@ module.exports = {
   pretty,
   format,
   formatFile,
-  formatPaths
+  formatPaths,
+  setOverrides
 };

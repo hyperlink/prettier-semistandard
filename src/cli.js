@@ -18,6 +18,9 @@ const cli = meow(
   Usage
     $ prettier-semistandard [<file|glob> ...]
 
+  Options
+    --print-width  Specify the print width
+
   Examples
     $ prettier-semistandard
     $ prettier-semistandard index.js
@@ -26,9 +29,9 @@ const cli = meow(
 `
 );
 
-Promise.resolve(
-  cli.input.length === 0 ? stdin() : undefined
-).then(data => {
+lib.setOverrides(cli.flags);
+
+Promise.resolve(cli.input.length === 0 ? stdin() : undefined).then(data => {
   if (data) {
     // Process stdin
     return R.composeP(
