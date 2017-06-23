@@ -13,7 +13,8 @@ tape.test('lib.lint', test => {
     .lint('console.log(1);\n')
     .catch(R.identity)
     .then(result =>
-      test.equal(result, 'console.log(1);\n', 'lint should lint correctly'));
+      test.equal(result, 'console.log(1);\n', 'lint should lint correctly')
+    );
 });
 
 tape.test('lib.pretty', test => {
@@ -37,7 +38,8 @@ tape.test('lib.format', test => {
         result,
         "import x from 'x';\n\nx(a, b, 'c');\n",
         'format should format correctly'
-      ));
+      )
+    );
 });
 
 tape.test('lib.formatFile', test => {
@@ -57,7 +59,8 @@ tape.test('lib.formatFile', test => {
         result,
         `console.log('test');\n`,
         'formatFile should format file correctly'
-      ));
+      )
+    );
 });
 
 tape.test('lib.formatPaths', test => {
@@ -87,7 +90,8 @@ tape.test('lib.formatPaths', test => {
         result,
         paths,
         'formatPaths should return an array of file path promises'
-      ))
+      )
+    )
     .then(() => paths.map(path => fs.readFileSync(path, 'utf8')))
     .then(files => {
       test.deepEqual(
@@ -101,5 +105,6 @@ tape.test('lib.formatPaths', test => {
         fs.readFileSync(ignored, 'utf8'),
         '\n    console.log("3")',
         'formatPaths should ignore certain paths'
-      ));
+      )
+    );
 });
